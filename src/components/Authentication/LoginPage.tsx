@@ -36,7 +36,7 @@ function LoginPage() {
                 {...register("phoneNumber")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-red-500 mb-5">{errors.phoneNumber?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.phoneNumber?.message}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
                 Password
@@ -47,7 +47,7 @@ function LoginPage() {
                 {...register("password")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-red-500 mb-5">{errors.password?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.password?.message}</p>
               
               <div className="flex justify-between ">
                 <div className="flex gap-2">
@@ -56,7 +56,7 @@ function LoginPage() {
                 </div>
                 <div className="text-blue-700 cursor-pointer">Forget Password?</div>
               </div>
-              <p className="text-red-500 mb-5">
+              <p className="text-[12px] text-red-500 mb-5">
                 {errors.checkbox?.message}
               </p>
               

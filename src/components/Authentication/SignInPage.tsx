@@ -64,8 +64,8 @@ function SignInPage() {
                 />
               </div>
               <div className="flex gap-12">
-                <p className="text-red-500 mb-5">{errors.firstName?.message}</p>
-                <p className="text-red-500 mb-5">{errors.lastName?.message}</p>
+                <p className="text-[12px] text-red-500 mb-5">{errors.firstName?.message}</p>
+                <p className="text-[12px] text-red-500 mb-5">{errors.lastName?.message}</p>
               </div>
               <label className="block text-gray-700 font-medium mb-1">
                 Email
@@ -76,7 +76,7 @@ function SignInPage() {
                 {...register("email")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-red-500 mb-5">{errors.password?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.password?.message}</p>
               <label className="block text-gray-700 font-medium mb-1">Branch Name</label>
               <select
                 className="w-full border border-gray-300 rounded-lg p-2 outline-none text-gray-500 "
@@ -90,7 +90,7 @@ function SignInPage() {
                   </option>
                 ))}
               </select>
-              <p className="text-red-500 mb-5">{errors.branch?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.branch?.message}</p>
               <label className="block text-gray-700 font-medium mb-1">
                 Password
               </label>
@@ -100,7 +100,7 @@ function SignInPage() {
                 {...register("password")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-red-500 mb-5">{errors.password?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.password?.message}</p>
               <label className="block text-gray-700 font-medium mb-1">
                 Confirm Password
               </label>
@@ -110,7 +110,7 @@ function SignInPage() {
                 {...register("confirmPassword")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-red-500 mb-5">
+              <p className="text-[12px] text-red-500 mb-5">
                 {errors.confirmPassword?.message}
               </p>
 
@@ -130,7 +130,7 @@ function SignInPage() {
                 </div>
 
               </div>
-               <p className="text-red-500 mb-5">
+               <p className="text-[12px] text-red-500 mb-5">
                 {errors.checkbox?.message}
               </p>
 
