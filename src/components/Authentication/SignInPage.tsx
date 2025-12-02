@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { SignInFormSchema } from "../../constants/SiginUpFormValidation.zod";
-import { branchList } from "../../constants/BranchList-data";
-import { useState } from "react";
+
 
 type FormValues = z.infer<typeof SignInFormSchema>;
 function SignInPage() {
-  const [ branch, setBranch] = useState('');
+ 
   const form = useForm<FormValues>({ resolver: zodResolver(SignInFormSchema) });
   const navigate = useNavigate();
   const { register, formState, handleSubmit, reset } = form;
@@ -22,11 +21,7 @@ function SignInPage() {
     navigate("/login-Page");
   };
 
-  const handleBranchSelector =(e: React.ChangeEvent<HTMLSelectElement>)=>{
-    const branchName = e.target.value;
-    setBranch(branchName);
-
-  }
+ 
   return (
     <>
       <div className="w-full min-h-screen md:pt-15 md:pb-15 md:pl-12 md:pr-12 flex justify-center items-center">
@@ -77,20 +72,7 @@ function SignInPage() {
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
               <p className="text-[12px] text-red-500 mb-5">{errors.password?.message}</p>
-              <label className="block text-gray-700 font-medium mb-1">Branch Name</label>
-              <select
-                className="w-full border border-gray-300 rounded-lg p-2 outline-none text-gray-500 "
-                value={branch}
-                onChange={handleBranchSelector}
-              >
-                <option value="" >Select Branch</option>
-                {branchList.map((b, index) => (
-                  <option key={index} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-              <p className="text-[12px] text-red-500 mb-5">{errors.branch?.message}</p>
+             
               <label className="block text-gray-700 font-medium mb-1">
                 Password
               </label>

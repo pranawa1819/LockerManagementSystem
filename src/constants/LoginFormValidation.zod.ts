@@ -3,16 +3,13 @@ import { z } from "zod";
 export const LoginFormSchema = z.object({
   phoneNumber: z
     .string()
-    .min(10, "Phone number is required")
-    .refine((data) => data === "9841903340", {
-      message: "Incorrect Name",
-    }),
+    .min(10, "Phone number must be min 10 digits")
+    .nonempty({message:"Phone number is required"}),
+    
   password: z
     .string()
-    .min(6, "Password is required")
-    .refine((data) => data === "pranawa123", {
-      message: "Incorrect Password",
-    }),
+    .nonempty({message:"Password is required"}),
+    
   
   checkbox: z
     .boolean().refine(val => val === true, {

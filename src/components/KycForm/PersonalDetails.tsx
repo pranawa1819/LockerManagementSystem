@@ -1,25 +1,15 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { PersonalDetailsSchema } from "../../constants/PersonalDetails.zod";
-import { useNavigate } from "react-router-dom";
+import { useFormContext } from "react-hook-form";
 
-type FormValues = z.infer<typeof PersonalDetailsSchema>;
 function PersonalDetails() {
-  const form = useForm<FormValues>({
-    resolver: zodResolver(PersonalDetailsSchema),
-  });
-  const { register, formState, handleSubmit } = form;
-  const navigate = useNavigate();
-  const onsubmit = () => {
-    navigate("/address-details");
-  };
-  const { errors } = formState;
-
+ const {
+     register,
+     formState: { errors },
+   } = useFormContext();
+ 
   return (
     <>
       <div className="w-full   flex justify-center items-center">
-        <form onSubmit={handleSubmit(onsubmit)}>
+        
           <div className="w-md shadow-lg p-7  rounded-lg">
             <div className="text-[20px] text-center mb-5 font-bold">
               Personal Details
@@ -35,8 +25,9 @@ function PersonalDetails() {
                 {...register("fullName")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.fullName?.message}</p>
-
+              {errors.fullName &&(
+              <p className="text-[12px] text-red-500 mb-5">{errors?.fullName?.message as string} </p>
+)}
               <label className="block text-gray-700 font-medium mb-1">
                 PHONE NUMBER
               </label>
@@ -46,7 +37,7 @@ function PersonalDetails() {
                 {...register("phoneNumber")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.phoneNumber?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.phoneNumber?.message as string}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
                 EMAIL
@@ -57,10 +48,10 @@ function PersonalDetails() {
                 {...register("email")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.email?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.email?.message as string}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
-                Marital Status
+                MARITAL STATUS
               </label>
               <div className="flex items-center gap-5 mb-2">
                 <label className="flex items-center gap-2">
@@ -82,7 +73,7 @@ function PersonalDetails() {
                 </label>
               </div>
               <p className="text-[12px] text-red-500 mb-5">
-                {errors.maritalStatus?.message}
+                {errors.maritalStatus?.message as string}
               </p>
 
               <label className="block text-gray-700 font-medium mb-1">
@@ -94,14 +85,11 @@ function PersonalDetails() {
                 {...register("nationality")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.nationality?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.nationality?.message as string}</p>
 
-              <button className="bg-[#47446a] text-white px-8 py-3 text-lg transition-all duration-300">
-                Next
-              </button>
             </div>
           </div>
-        </form>
+        
       </div>
     </>
   );

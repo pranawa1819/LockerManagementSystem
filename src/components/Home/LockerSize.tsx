@@ -3,8 +3,8 @@ import { lockerSize } from "../../constants/LockerSize-data";
 
 function LockerSize() {
     const navigate = useNavigate();
-    const handleSizePath=(path:string)=>{
-        navigate(path);
+    const handleSizePath=(size: string)=>{
+      navigate(`/kyc?size=${size}`);
     }
   return (
     <>
@@ -20,7 +20,7 @@ function LockerSize() {
           </div>
           <div className="grid grid-cols-3 gap-8">
             {lockerSize.map((lockerSizes, index) => (
-              <div onClick={()=>handleSizePath(lockerSizes.path)} key={index} className="md:max-w-[254px] h-96 pt-2 pb-2 pl-3 pr-3 border-2 border-gray-400 rounded-md flex flex-col justify-center items-center gap-6">
+              <div onClick={() => handleSizePath(lockerSizes.size)} key={index} className="md:max-w-[254px] h-96 pt-2 pb-2 pl-3 pr-3 border-2 border-gray-400 rounded-md flex flex-col justify-center items-center gap-6">
                 <div className="flex justify-center"><lockerSizes.icons className="text-[20px]"/></div>
                 <div className="flex flex-col justify-center items-center gap-2">
                     <div className="text-[30px] cursor-pointer">{lockerSizes.size}</div>

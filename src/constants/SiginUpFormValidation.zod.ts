@@ -23,9 +23,7 @@ export const SignInFormSchema = z
      .string()
      .min(6, "ConfirmPassword is required"),
 
-    branch: z
-     .string()
-     .min(1, "Select your bank branch"),
+    
 
     checkbox: z
       .boolean().refine(val => val === true, {

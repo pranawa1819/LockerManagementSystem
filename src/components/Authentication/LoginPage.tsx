@@ -9,10 +9,21 @@ function LoginPage() {
   const form = useForm<FormValues>({ resolver: zodResolver(LoginFormSchema) });
   const navigate = useNavigate();
   const { register, formState, handleSubmit, reset } = form;
-
   const onsubmit = (data: FormValues) => {
+    
+    localStorage.setItem("phoneNumber",data.phoneNumber);
+    localStorage.setItem("password",data.password);
     console.log(data);
     reset();
+    if(data.phoneNumber==="9841309491" && data.password==="pranawa123"){
+       navigate('/lockerEntry')
+    }
+    else if(data.phoneNumber==="9841903340" && data.password==="admin123"){
+      navigate("/path");
+    }
+    else{
+      navigate('/login-page');
+    }
   };
   const { errors } = formState;
   const navigateToSignInPage = () => {
