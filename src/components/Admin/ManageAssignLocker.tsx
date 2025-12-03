@@ -4,9 +4,9 @@ import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 function ManageAssignLocker() {
   const [records] = useState(
-    JSON.parse(localStorage.getItem("kycFormData") as string) || {}
+    JSON.parse(localStorage.getItem("kycFormData") as string) || null
   );
-  console.log(records)
+  console.log(records);
   return (
     <>
       <div className="w-full  flex flex-col md:p-8 gap-8">
@@ -17,6 +17,7 @@ function ManageAssignLocker() {
         <div>
           <table className="w-full border border-gray-300">
             <thead className="bg-gray-200">
+              
               <tr>
                 <th className="border p-2">Size</th>
                 <th className="border p-2">Date</th>
@@ -44,29 +45,82 @@ function ManageAssignLocker() {
             </thead>
 
             <tbody>
+               {!records ? (
+                <tr>
+                  <td colSpan={3} className="text-center p-3">
+                    No locker types found
+                  </td>
+                </tr>
+              ) : (
               <tr>
                 <td className="border p-2 text-center">{records.size}</td>
                 <td className="border p-2 text-center">
                   {records.reversedDate}
                 </td>
-                <td className="border p-2 text-center">{records.accountNumber}</td>
+                <td className="border p-2 text-center">
+                  {records.accountNumber}
+                </td>
                 <td className="border p-2 text-center">{records.bankName}</td>
                 <td className="border p-2 text-center">{records.branch}</td>
                 <td className="border p-2 text-center">{records.fullName}</td>
-                <td className="border p-2 text-center">{records.phoneNumber}</td>
+                <td className="border p-2 text-center">
+                  {records.phoneNumber}
+                </td>
                 <td className="border p-2 text-center">{records.email}</td>
-                <td className="border p-2 text-center">{records.maritalStatus}</td>
-                <td className="border p-2 text-center">{records.nationality}</td>
+                <td className="border p-2 text-center">
+                  {records.maritalStatus}
+                </td>
+                <td className="border p-2 text-center">
+                  {records.nationality}
+                </td>
                 <td className="border p-2 text-center">{records.province}</td>
                 <td className="border p-2 text-center">{records.district}</td>
-                <td className="border p-2 text-center">{records.municipality}</td>
+                <td className="border p-2 text-center">
+                  {records.municipality}
+                </td>
                 <td className="border p-2 text-center">{records.tole}</td>
-                <td className="border p-2 text-center">{records.dateOfBirth}</td>
+                <td className="border p-2 text-center">{records.wardNumber}</td>
+                <td className="border p-2 text-center">
+                  {records.dateOfBirth}
+                </td>
                 <td className="border p-2 text-center">{records.occupation}</td>
-                <td className="border p-2 text-center">{records.annualSalary}</td>
-                {/* <td className="border p-2 text-center">{records.photo}</td> */}
-                {/* <td className="border p-2 text-center">{records.citizenshipFront}</td> */}
-                {/* <td className="border p-2 text-center">{records.citizenshipBack}</td> */}
+                <td className="border p-2 text-center">
+                  {records.annualSalary}
+                </td>
+                <td className="border p-2 text-center">
+                  {records.photo && typeof records.photo === "string" ? (
+                    <img
+                      src={records.photo}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  ) : (
+                    "No Photo"
+                  )}
+                </td>
+
+                <td className="border p-2 text-center">
+                  {records.citizenshipFront &&
+                  typeof records.citizenshipFront === "string" ? (
+                    <img
+                      src={records.citizenshipFront}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  ) : (
+                    "No Front"
+                  )}
+                </td>
+
+                <td className="border p-2 text-center">
+                  {records.citizenshipBack &&
+                  typeof records.citizenshipBack === "string" ? (
+                    <img
+                      src={records.citizenshipBack}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  ) : (
+                    "No Back"
+                  )}
+                </td>
 
                 <td className="border p-2">
                   <div className="flex gap-3 justify-center items-center">
@@ -75,6 +129,7 @@ function ManageAssignLocker() {
                   </div>
                 </td>
               </tr>
+              )}
             </tbody>
           </table>
         </div>

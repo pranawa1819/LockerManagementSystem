@@ -28,7 +28,7 @@ export const KycDetailsSchema = z.object({
     .refine((val) => val !== undefined && val !== "", "Select branch"),
 
   //personal details
-  fullName: z.string().min(1, {message: "Name is required"}),
+  fullName: z.string().min(1, { message: "Name is required" }),
 
   email: z
     .string()
@@ -37,7 +37,7 @@ export const KycDetailsSchema = z.object({
 
   phoneNumber: z
     .string()
-    .min(10, {message:"Phone number must be atleast 10 digit"})
+    .min(10, { message: "Phone number must be atleast 10 digit" })
     .regex(/^[0-9]+$/, "Phone number can only contain digits"),
 
   maritalStatus: z.enum(["single", "married"], {
@@ -81,17 +81,9 @@ export const KycDetailsSchema = z.object({
     .min(1, "Annual Salary is required")
     .regex(/^[0-9]+$/, "Annual Salary can only contain digits"),
 
-  citizenshipFront: z.any()
-    .transform((val) => (val instanceof FileList ? val[0] : val))
-    .refine((file) => file instanceof File, "Front side is required"),
-
-  citizenshipBack: z.any()
-    .transform((val) => (val instanceof FileList ? val[0] : val))
-    .refine((file) => file instanceof File, "Back side is required"),
-
-  photo: z.any()
-    .transform((val) => (val instanceof FileList ? val[0] : val))
-    .refine((file) => file instanceof File, "Photo is required"),
+  photo: z.string().min(1, "Photo is required"),
+  citizenshipFront: z.string().min(1, "Front side is required"),
+  citizenshipBack: z.string().min(1, "Back side is required"),
 });
 
 export type FormValues = z.infer<typeof KycDetailsSchema>;

@@ -16,10 +16,12 @@ function Addlocker() {
     localStorage.setItem("Locker Type:", JSON.stringify(data));
     reset();
     setSuccessMsg("Locker type added successfully!");
-
+    
     setTimeout(() => {
       setSuccessMsg("");
     }, 3000);
+
+  
   };
   const { errors, isSubmitSuccessful } = formState;
   return (

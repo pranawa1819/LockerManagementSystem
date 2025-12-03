@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 function ManageLocker() {
   const [records] = useState(
-    JSON.parse(localStorage.getItem("Locker Type:") as string) || {}
+    JSON.parse(localStorage.getItem("Locker Type:") as string) || null
   );
 
   return (
@@ -25,9 +25,9 @@ function ManageLocker() {
             </thead>
 
             <tbody>
-              {records === null ? (
+              {!records ? (
                 <tr>
-                  <td colSpan={2} className="text-center p-3">
+                  <td colSpan={3} className="text-center p-3">
                     No locker types found
                   </td>
                 </tr>
