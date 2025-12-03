@@ -51,7 +51,7 @@ const {
                   </option>
                 ))}
               </select>
-              <p className="text-[12px] text-red-500 mb-5">{errors.province?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.province?.message as string}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
                 DISTRICT
@@ -67,7 +67,7 @@ const {
                   <option key={index}>{d}</option>
                 ))}
               </select>
-               <p className="text-[12px] text-red-500 mb-5">{errors.district?.message}</p>
+               <p className="text-[12px] text-red-500 mb-5">{errors.district?.message as string}</p>
                <label className="block text-gray-700 font-medium mb-1">
                 MUNICIPALITY
               </label>
@@ -77,7 +77,7 @@ const {
                 {...register("municipality")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.municipality?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.municipality?.message as string}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
                 TOLE
@@ -88,7 +88,7 @@ const {
                 {...register("tole")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.tole?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.tole?.message as string}</p>
 
               <label className="block text-gray-700 font-medium mb-1">
                 WARD NUMBER
@@ -99,7 +99,7 @@ const {
                 {...register("ward")}
                 className="w-full border border-gray-300 rounded-lg p-2  outline-none "
               />
-              <p className="text-[12px] text-red-500 mb-5">{errors.ward?.message}</p>
+              <p className="text-[12px] text-red-500 mb-5">{errors.ward?.message as string}</p>
             </div>
           </div>
         
